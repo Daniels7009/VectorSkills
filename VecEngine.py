@@ -29,7 +29,6 @@ def get_module_text(robot):
         try:
             mod = importlib.import_module(module)
             mod.main(robot)
-            break
         except ModuleNotFoundError:
             #try and catch the issue
             if module in Synonyms.wiki:
@@ -45,6 +44,7 @@ def get_module_text(robot):
                 #invalid input, do it again
                 robot.say_text("I don't know " + module + ", sorry!")
                 print("type a valid \".py\" program you wrote, please.")
+        break
 
 def main():
     evt = threading.Event()
