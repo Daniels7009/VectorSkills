@@ -26,25 +26,23 @@ def get_module_text(robot):
         module = input("Type the name of a module: ")
         
         #parse each response and return a standard value
+        if module in Synonyms.wiki:
+            module = "VecWiki"
+        elif module in Synonyms.test:
+            module = "VecTest"
+        elif module in Synonyms.rps:
+            module = "VecRPS"
+        elif module in Synonyms.cancel:
+            break
         try:
             mod = importlib.import_module(module)
             mod.main(robot)
+            break
         except ModuleNotFoundError:
-            #try and catch the issue
-            if module in Synonyms.wiki:
-                mod = importlib.import_module("VecWiki")
-                mod.main(robot)
-            elif module in Synonyms.test:
-                mod = importlib.import_module("VecTest")
-                mod.main(robot)
-            elif module in Synonyms.rps:
-                mod = importlib.import_module("VecRPS")
-                mod.main(robot)
-            else:
-                #invalid input, do it again
-                robot.say_text("I don't know " + module + ", sorry!")
-                print("type a valid \".py\" program you wrote, please.")
-        break
+            #invalid input, do it again
+            robot.say_text("I don't know " + module + ", sorry!")
+            print("type a valid \".py\" program you wrote, please.")
+        
 
 def main():
     evt = threading.Event()

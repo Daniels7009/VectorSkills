@@ -35,6 +35,8 @@ def get_gesture_text(robot):
             return "paper"
         elif thrown == "scissors" or thrown == "s" or thrown == "scissor":
             return "scissors"
+        elif thrown == "dynamite" or thrown == "tnt" or thrown == "gun":
+            robot.say_text("Hey, that's cheating!")
         else:
             #invalid input, do it again
             robot.say_text("Didn't catch that;")

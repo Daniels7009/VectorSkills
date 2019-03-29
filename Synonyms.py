@@ -14,6 +14,8 @@ no = ["n", "no", "no indeed", "absolutely not", "most certainly not",
       "of course not", "under no circumstances", "by no means", "not at all",
       "negative", "never", "not really", "no thanks", "nae", "nope", "nah",
       "not on your life", "no way", "not on your nelly","no siree","naw","nay"]
+
+cancel = ["cancel", "quit", "nevermind", "stop", "cease", "exit"]
 #These are for finding modules
 wiki = ["wikipedia", "look up", "wiki",
         "search for","google"]
