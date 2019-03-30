@@ -2,7 +2,6 @@
 """
 Created on Mon Mar 25 23:51:11 2019
     Wake Word subscription engine to call other vector modules
-    Requires some way to loop and catch multiple wake calls
 @author: Daniel
 """
 
