@@ -8,7 +8,6 @@ Created on Mon Mar 25 23:51:11 2019
 import time
 import importlib
 import functools
-import threading
 import anki_vector
 import Synonyms
 from anki_vector.events import Events
@@ -44,7 +43,6 @@ def get_module_text(robot):
         
 
 def main():
-    evt = threading.Event()
     #Called each time Vector hears "Hey, Vector"
     def on_wake_word(robot, event_type, event):
        
@@ -55,7 +53,6 @@ def main():
             robot.conn.request_control()
             wake_word_heard = True
             get_module_text(robot)
-            evt.set()
             robot.conn.release_control()
         else:
             #on second wake_word_event, reset bool and alert cmd that it is ready
@@ -71,11 +68,10 @@ def main():
         robot.events.subscribe(on_wake_word, Events.wake_word)
 
         print('------ Vector is waiting to hear "Hey Vector!" Press ctrl+c to exit early ------')
-        try:
-            #wait for wake word to event to occur
-            while True:
-                time.sleep(1)
-        finally:
-            robot.events.unsubscribe(on_wake_word, Events.wake_word)
+        robot.conn.release_control()
+
+        while True:
+            time.sleep(1)
+                
 if __name__ == '__main__':
     main()
