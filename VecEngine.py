@@ -49,11 +49,7 @@ def main():
         #Bool to protect code from Vector's extra wake_word_heard events
         global wake_word_heard
         if not wake_word_heard:
-            #Grab control from default behavior to query user and perform tasks
-            robot.conn.request_control()
             wake_word_heard = True
-            get_module_text(robot)
-            robot.conn.release_control()
         else:
             #on second wake_word_event, reset bool and alert cmd that it is ready
             wake_word_heard = False
@@ -68,10 +64,14 @@ def main():
         robot.events.subscribe(on_wake_word, Events.wake_word)
 
         print('------ Vector is waiting to hear "Hey Vector!" Press ctrl+c to exit early ------')
-        robot.conn.release_control()
 
         while True:
             time.sleep(1)
+            if wake_word_heard:
+                #Grab control from default behavior to query user and perform tasks
+                robot.conn.request_control()
+                get_module_text(robot)
+                robot.conn.release_control()
                 
 if __name__ == '__main__':
     main()
