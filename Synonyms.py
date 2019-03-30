@@ -15,7 +15,7 @@ no = ["n", "no", "no indeed", "absolutely not", "most certainly not",
       "negative", "never", "not really", "no thanks", "nae", "nope", "nah",
       "not on your life", "no way", "not on your nelly","no siree","naw","nay"]
 
-cancel = ["cancel", "quit", "nevermind", "stop", "cease", "exit"]
+cancel = ["cancel", "quit", "nevermind", "stop", "cease", "exit", "none"]
 #These are for finding modules
 wiki = ["wikipedia", "look up", "wiki",
         "search for","google"]
@@ -24,3 +24,4 @@ test = ["test","check"]
 
 rps = ["rps", "rock, paper, scissors", "roshambo","janken",
        "rock paper scissors"]
+roll = ["roll", "roll a die", "shoot dice", "roll die", "roll cube"]

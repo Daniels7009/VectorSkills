@@ -30,6 +30,8 @@ def get_module_text(robot):
             module = "VecTest"
         elif module in Synonyms.rps:
             module = "VecRPS"
+        elif module in Synonyms.roll:
+            module = "VecRoll"
         elif module in Synonyms.cancel:
             break
         try:
